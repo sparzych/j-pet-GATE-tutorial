@@ -1,0 +1,137 @@
+# WORLD INITIALIZATION
+
+/gate/world/geometry/setXLength 10200. mm
+/gate/world/geometry/setYLength 10200. mm
+#/gate/world/geometry/setZLength 2450. mm
+/gate/world/geometry/setZLength 60500. mm
+/gate/world/vis/forceWireframe 1
+/gate/world/vis/forceSolid 0
+/gate/world/vis/setColor grey
+
+# SCANNER
+
+/gate/world/daughters/name cylindricalPET
+/gate/world/daughters/insert cylinder
+/gate/cylindricalPET/setMaterial Air
+/gate/cylindricalPET/geometry/setRmin 414. mm
+/gate/cylindricalPET/geometry/setRmax 510. mm
+/gate/cylindricalPET/geometry/setHeight 2430. mm
+/gate/cylindricalPET/vis/forceWireframe
+/gate/cylindricalPET/vis/setColor black
+
+# FIRST MODULE WITH THREE LAYERS
+
+/gate/cylindricalPET/daughters/name module1
+/gate/cylindricalPET/daughters/insert box	
+/gate/module1/placement/setTranslation 446.599 0.0 0.0 mm
+/gate/module1/geometry/setXLength 63.9 mm
+/gate/module1/geometry/setYLength 108.3 mm
+/gate/module1/geometry/setZLength 2430.0 mm
+/gate/module1/setMaterial Air
+/gate/module1/vis/forceWireframe 0
+/gate/module1/vis/forceSolid 0
+/gate/module1/vis/setColor black
+
+# RING
+
+/gate/module1/daughters/name crystal1
+/gate/module1/daughters/insert box	
+/gate/crystal1/geometry/setXLength 63.8 mm
+/gate/crystal1/geometry/setYLength 108.3 mm
+/gate/crystal1/geometry/setZLength 330.0 mm
+/gate/crystal1/setMaterial Air
+/gate/crystal1/vis/forceWireframe 0
+/gate/crystal1/vis/forceSolid 0
+/gate/crystal1/vis/setColor black
+
+# RING REPEATER 
+
+/gate/crystal1/repeaters/insert cubicArray
+/gate/crystal1/cubicArray/setRepeatNumberX 1
+/gate/crystal1/cubicArray/setRepeatNumberY 1
+/gate/crystal1/cubicArray/setRepeatNumberZ 7
+/gate/crystal1/cubicArray/setRepeatVector 0. 0. 350.0 mm
+
+# LAYER_1 MODULE
+
+/gate/crystal1/daughters/name layer_1
+/gate/crystal1/daughters/insert box
+/gate/layer_1/placement/setTranslation -16.8 0. 0. mm
+/gate/layer_1/geometry/setXLength 30. mm
+/gate/layer_1/geometry/setYLength 6. mm
+/gate/layer_1/geometry/setZLength 3. mm
+/gate/layer_1/setMaterial EJ230
+/gate/layer_1/vis/forceWireframe 0
+/gate/layer_1/vis/forceSolid 1
+/gate/layer_1/vis/setColor grey
+
+
+# LAYER_1 REPEATER 
+
+/gate/layer_1/repeaters/insert cubicArray
+/gate/layer_1/cubicArray/setRepeatNumberX 1
+/gate/layer_1/cubicArray/setRepeatNumberY 16
+/gate/layer_1/cubicArray/setRepeatNumberZ 110
+/gate/layer_1/cubicArray/setRepeatVector 0. 6.6 3. mm
+
+
+# LAYER_2 MODULE
+
+/gate/crystal1/daughters/name layer_2
+/gate/crystal1/daughters/insert box
+/gate/layer_2/placement/setTranslation 16.8 0. 0. mm
+/gate/layer_2/geometry/setXLength 30. mm
+/gate/layer_2/geometry/setYLength 6. mm
+/gate/layer_2/geometry/setZLength 3. mm
+/gate/layer_2/setMaterial EJ230
+/gate/layer_2/vis/forceWireframe 0
+/gate/layer_2/vis/forceSolid 1
+/gate/layer_2/vis/setColor grey
+
+# LAYER_2 REPEATER 
+
+/gate/layer_2/repeaters/insert cubicArray
+/gate/layer_2/cubicArray/setRepeatNumberX 1
+/gate/layer_2/cubicArray/setRepeatNumberY 16
+/gate/layer_2/cubicArray/setRepeatNumberZ 110
+/gate/layer_2/cubicArray/setRepeatVector 0. 6.6 3. mm
+
+
+# LAYER_3 WLS MODULE
+
+/gate/crystal1/daughters/name layer_3
+/gate/crystal1/daughters/insert box
+/gate/layer_3/placement/setTranslation 0.0 0.075 0.0 mm
+/gate/layer_3/geometry/setXLength 3. mm
+/gate/layer_3/geometry/setYLength 108.15 mm
+/gate/layer_3/geometry/setZLength 6. mm
+/gate/layer_3/setMaterial EJ230
+/gate/layer_3/vis/forceWireframe 0
+/gate/layer_3/vis/forceSolid 0
+/gate/layer_3/vis/setColor grey
+
+# LAYER_3 WLS REPEATER 
+
+/gate/layer_3/repeaters/insert cubicArray
+/gate/layer_3/cubicArray/setRepeatNumberX 1
+/gate/layer_3/cubicArray/setRepeatNumberY 1
+/gate/layer_3/cubicArray/setRepeatNumberZ 50
+/gate/layer_3/cubicArray/setRepeatVector 0. 0. 6.4  mm
+
+# MODULE REPEATER 
+
+/gate/module1/repeaters/insert ring
+/gate/module1/ring/setRepeatNumber 24
+/gate/module1/ring/enableAutoRotation
+
+# SYSTEM
+
+/gate/systems/cylindricalPET/rsector/attach module1
+/gate/systems/cylindricalPET/crystal/attach crystal1
+/gate/systems/cylindricalPET/layer0/attach layer_1
+/gate/systems/cylindricalPET/layer1/attach layer_2
+/gate/systems/cylindricalPET/layer2/attach layer_3
+
+/gate/layer_1/attachCrystalSD
+/gate/layer_2/attachCrystalSD
+/gate/layer_3/attachCrystalSD

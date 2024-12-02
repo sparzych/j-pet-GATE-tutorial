@@ -1,0 +1,12 @@
+  
+# EASY ONE COMPARTMENT PHANTOM
+
+/gate/world/daughters/name phantom
+/gate/world/daughters/insert cylinder
+/gate/phantom/setMaterial Water
+/gate/phantom/vis/forceWireframe
+/gate/phantom/vis/setColor white
+/gate/phantom/geometry/setRmax   10. cm
+/gate/phantom/geometry/setHeight 20. cm
+
+/gate/phantom/attachPhantomSD

@@ -1,0 +1,17 @@
+#=====================================================
+# linear source
+#=====================================================
+
+/gate/source/addSource                        linear Extended
+/gate/source/linear/gps/type              Volume
+/gate/source/linear/gps/shape             Cylinder
+/gate/source/linear/gps/radius 0.05 mm
+/gate/source/linear/gps/halfz 550.0 mm
+/gate/source/linear/gps/pos/centre 0. 0. 0. mm
+
+/gate/source/linear/setActivity           1000000 Bq
+/gate/source/linear/setType pPs
+/gate/source/linear/setEnableDeexcitation true
+/gate/source/linear/setPromptGammaEnergy 1157.0 keV
+
+/gate/source/list

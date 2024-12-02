@@ -1,0 +1,14 @@
+/gate/source/addSource twogamma
+/gate/source/twogamma/setType backtoback
+/gate/source/twogamma/gps/type Volume
+/gate/source/twogamma/gps/shape Cylinder
+/gate/source/twogamma/gps/radius 10. cm
+/gate/source/twogamma/gps/halfz 25. cm
+/gate/source/twogamma/gps/centre 0. 0. 0. mm
+/gate/source/twogamma/gps/particle gamma
+/gate/source/twogamma/gps/energytype Mono
+/gate/source/twogamma/gps/monoenergy 511 keV
+/gate/source/twogamma/gps/angtype iso
+/* /gate/source/twogamma/setForcedUnstableFlag true */
+/* /gate/source/twogamma/setForcedHalfLife 6586 s */
+/gate/source/twogamma/setActivity 100000000. becquerel

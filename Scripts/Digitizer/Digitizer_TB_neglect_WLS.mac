@@ -1,0 +1,23 @@
+# A D D E R  
+/gate/digitizer/Singles/insert adderCompton
+
+# R E A D O U T  
+/gate/digitizer/Singles/insert            readout  
+/gate/digitizer/Singles/readout/setDepth  5
+
+# E N E R G Y B L U R R I N G
+/gate/digitizer/Singles/insert                   thresholder 
+/gate/digitizer/Singles/thresholder/setThreshold 200. keV 
+/gate/digitizer/Singles/insert blurring
+/gate/digitizer/Singles/blurring/setResolution 0.23121
+/gate/digitizer/Singles/blurring/setEnergyOfReference 200.0 keV
+
+/gate/digitizer/name  SinglesNoWLS
+/gate/digitizer/insert  singleChain
+/gate/digitizer/SinglesNoWLS/setInputName  Singles
+/gate/digitizer/SinglesNoWLS/insert  restrictVolume
+/gate/digitizer/SinglesNoWLS/restrictVolume/setRestrictedVolume  layer_3
+/gate/digitizer/SinglesNoWLS/restrictVolume/setRestrictionMode  reject
+
+/gate/digitizer/Coincidences/setWindow    3. ns 
+/gate/digitizer/Coincidences/setInputName SinglesNoWLS
